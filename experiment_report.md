@@ -1,8 +1,8 @@
 # Experiment Report: Data Quality Impact on AI Agent
 
-**Student ID:** AI20K-XXXX
-**Name:** (Dien ten cua ban)
-**Date:** (Dien ngay thuc hien)
+**Student ID:** 2A202600631
+**Name:** Pham Hoang Anh
+**Date:** 2026-06-10
 
 ---
 
@@ -12,8 +12,8 @@ Chay `agent_simulation.py` voi 2 bo du lieu va ghi lai ket qua:
 
 | Scenario | Agent Response | Accuracy (1-10) | Notes |
 |----------|----------------|-----------------|-------|
-| Clean Data (`processed_data.csv`) | (Ghi cau tra loi cua Agent) | | |
-| Garbage Data (`garbage_data.csv`) | (Ghi cau tra loi cua Agent) | | |
+| Clean Data (`processed_data.csv`) | Agent: Based on my data, the best choice is Laptop at $1200. | 10 | Dữ liệu sạch sẽ, chuẩn hoá tốt, Agent hoạt động chính xác. |
+| Garbage Data (`garbage_data.csv`) | Agent: Based on my data, the best choice is Nuclear Reactor at $999999. | 1 | Dữ liệu bị nhiễu do chứa outlier cực đoan và các lỗi khác. |
 
 ---
 
@@ -21,15 +21,12 @@ Chay `agent_simulation.py` voi 2 bo du lieu va ghi lai ket qua:
 
 ### Tai sao Agent tra loi sai khi dung Garbage Data?
 
-(Viet nhan xet cua ban o day — it nhat 50 tu)
-
-(Hay phan tich cac van de nhu Duplicate IDs, wrong data types, outliers, null values
-va giai thich tai sao chung anh huong den ket qua cua Agent.)
+Khi sử dụng Garbage Data, Agent đã đưa ra câu trả lời sai do dữ liệu đầu vào chứa nhiều lỗi chất lượng nghiêm trọng. Cụ thể, bộ dữ liệu rác có bản ghi ngoại lệ cực đoan (outlier) như 'Nuclear Reactor' với giá $999999, khiến logic tìm sản phẩm điện tử đắt nhất trả về một kết quả không thực tế. Đồng thời, các lỗi khác như trùng lặp ID (Duplicate IDs), sai kiểu dữ liệu (như chuỗi 'ten dollars' cho cột price) và các giá trị bị khuyết thiếu (null values) phá vỡ tính nhất quán của bảng dữ liệu, làm cho Agent không thể tính toán hoặc so sánh chính xác các thuộc tính khác. Những lỗi này chứng minh rằng AI Agent hoàn toàn phụ thuộc vào chất lượng dữ liệu nguồn đầu vào.
 
 ---
 
 ## 3. Ket luan
 
-**Quality Data > Quality Prompt?** (Dong y hay khong? Giai thich ngan gon.)
+**Quality Data > Quality Prompt?** 
 
-(Viet ket luan cua ban o day)
+Tôi hoàn toàn đồng ý với nhận định này. Cho dù bạn viết prompt thông minh hay chi tiết đến đâu, nếu dữ liệu cung cấp cho mô hình (knowledge base) bị bẩn, thiếu sót hoặc chứa outlier nhiễu, AI Agent vẫn sẽ thực hiện tính toán trên dữ liệu lỗi và đưa ra câu trả lời sai lệch (hallucination). Dữ liệu sạch và chất lượng chính là nền móng cốt lõi cho mọi ứng dụng AI đáng tin cậy.
