@@ -9,7 +9,7 @@
 
 ## Mo ta
 
-(Mo ta ngan gon bai lab va nhung gi ban da lam)
+Bài Lab này thực hiện xây dựng một đường ống dẫn dữ liệu tự động (ETL Pipeline) bằng Python và Pandas. Dự án trích xuất dữ liệu sản phẩm từ file JSON, thực hiện xác thực và lọc bỏ các bản ghi không hợp lệ (giá trị âm hoặc trống danh mục), biến đổi chuẩn hóa dữ liệu, lưu trữ kết quả và tiến hành thử nghiệm giả lập Stress Test đối với AI Agent để so sánh tác động của chất lượng dữ liệu.
 
 ---
 
@@ -17,17 +17,18 @@
 
 ### Prerequisites
 ```bash
-pip install pandas
+pip install pandas pytest
 ```
 
 ### Chay ETL Pipeline
 ```bash
-python solution.py
+python3 solution.py
 ```
 
 ### Chay Agent Simulation (Stress Test)
 ```bash
-# Mo ta cach ban chay thi nghiem Clean vs Garbage data
+python3 generate_garbage.py
+python3 agent_simulation.py
 ```
 
 ---
@@ -45,4 +46,7 @@ python solution.py
 
 ## Ket qua
 
-(Tom tat ket qua: bao nhieu records da xu ly, bao nhieu bi loai, v.v.)
+- **Tổng số records trong file thô:** 5 bản ghi.
+- **Số records hợp lệ và được lưu trữ:** 3 bản ghi (Laptop, Chair, Monitor).
+- **Số records bị loại bỏ do không hợp lệ:** 2 bản ghi (Mystery Box vì giá < 0, Phone vì trống category).
+- **Stress Test:** AI Agent đưa ra kết quả chính xác trên Clean Data và đưa ra kết quả sai lệch nghiêm trọng trên Garbage Data.
